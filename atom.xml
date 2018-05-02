@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://0x9k.club/"/>
   <updated>2018-05-02T15:39:39.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://0x9k.club/</id>
   
   <author>
     <name>0x9k</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>CVE-2013-6282-analysis</title>
-    <link href="http://yoursite.com/posts/kernel/2018-05-02-cve_2013_6282_analysis.html"/>
-    <id>http://yoursite.com/posts/kernel/2018-05-02-cve_2013_6282_analysis.html</id>
+    <link href="https://0x9k.club/posts/kernel/2018-05-02-cve_2013_6282_analysis.html"/>
+    <id>https://0x9k.club/posts/kernel/2018-05-02-cve_2013_6282_analysis.html</id>
     <published>2018-05-02T15:39:39.000Z</published>
     <updated>2018-05-02T15:39:39.000Z</updated>
     
@@ -31,21 +31,21 @@
     
     </summary>
     
-      <category term="kernel" scheme="http://yoursite.com/categories/kernel/"/>
+      <category term="kernel" scheme="https://0x9k.club/categories/kernel/"/>
     
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+      <category term="linux" scheme="https://0x9k.club/tags/linux/"/>
     
-      <category term="kernel" scheme="http://yoursite.com/tags/kernel/"/>
+      <category term="kernel" scheme="https://0x9k.club/tags/kernel/"/>
     
-      <category term="cve-2013-6282" scheme="http://yoursite.com/tags/cve-2013-6282/"/>
+      <category term="cve-2013-6282" scheme="https://0x9k.club/tags/cve-2013-6282/"/>
     
   </entry>
   
   <entry>
     <title>syzkaller_source_read_target_type_and_function</title>
-    <link href="http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html"/>
-    <id>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html</id>
+    <link href="https://0x9k.club/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html"/>
+    <id>https://0x9k.club/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html</id>
     <published>2018-05-02T15:38:20.000Z</published>
     <updated>2018-05-02T15:38:20.000Z</updated>
     
@@ -58,16 +58,16 @@
     </summary>
     
     
-      <category term="syzkaller" scheme="http://yoursite.com/tags/syzkaller/"/>
+      <category term="syzkaller" scheme="https://0x9k.club/tags/syzkaller/"/>
     
-      <category term="fuzzer" scheme="http://yoursite.com/tags/fuzzer/"/>
+      <category term="fuzzer" scheme="https://0x9k.club/tags/fuzzer/"/>
     
   </entry>
   
   <entry>
     <title>syzkaller_source_read_syscall_type_and_function</title>
-    <link href="http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html"/>
-    <id>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html</id>
+    <link href="https://0x9k.club/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html"/>
+    <id>https://0x9k.club/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html</id>
     <published>2018-05-02T15:38:06.000Z</published>
     <updated>2018-05-02T15:38:06.000Z</updated>
     
@@ -80,16 +80,16 @@
     </summary>
     
     
-      <category term="syzkaller" scheme="http://yoursite.com/tags/syzkaller/"/>
+      <category term="syzkaller" scheme="https://0x9k.club/tags/syzkaller/"/>
     
-      <category term="fuzzer" scheme="http://yoursite.com/tags/fuzzer/"/>
+      <category term="fuzzer" scheme="https://0x9k.club/tags/fuzzer/"/>
     
   </entry>
   
   <entry>
     <title>syzkaller_source_read_rand_type_and_function</title>
-    <link href="http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html"/>
-    <id>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html</id>
+    <link href="https://0x9k.club/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html"/>
+    <id>https://0x9k.club/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html</id>
     <published>2018-05-02T15:37:53.000Z</published>
     <updated>2018-05-02T15:37:53.000Z</updated>
     
@@ -102,16 +102,16 @@
     </summary>
     
     
-      <category term="syzkaller" scheme="http://yoursite.com/tags/syzkaller/"/>
+      <category term="syzkaller" scheme="https://0x9k.club/tags/syzkaller/"/>
     
-      <category term="fuzzer" scheme="http://yoursite.com/tags/fuzzer/"/>
+      <category term="fuzzer" scheme="https://0x9k.club/tags/fuzzer/"/>
     
   </entry>
   
   <entry>
     <title>new_reliable_android_kernel_root_exploit</title>
-    <link href="http://yoursite.com/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html"/>
-    <id>http://yoursite.com/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html</id>
+    <link href="https://0x9k.club/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html"/>
+    <id>https://0x9k.club/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html</id>
     <published>2018-05-02T15:37:23.000Z</published>
     <updated>2018-05-02T15:37:23.000Z</updated>
     
@@ -124,11 +124,11 @@
     </summary>
     
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+      <category term="linux" scheme="https://0x9k.club/tags/linux/"/>
     
-      <category term="kernel" scheme="http://yoursite.com/tags/kernel/"/>
+      <category term="kernel" scheme="https://0x9k.club/tags/kernel/"/>
     
-      <category term="exploit" scheme="http://yoursite.com/tags/exploit/"/>
+      <category term="exploit" scheme="https://0x9k.club/tags/exploit/"/>
     
   </entry>
   
