@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html</loc>
-    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
+    <loc>http://yoursite.com/posts/kernel/2018-05-02-cve_2013_6282_analysis.html</loc>
+    <lastmod>2018-05-02T15:39:39.000Z</lastmod>
     <data>
         <display>
-        <title>cve_2013_6282_analysis</title>
-        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
+        <title>CVE-2013-6282-analysis</title>
+        <pubTime>2018-05-02T15:39:39.000Z</pubTime>
         
         <tag>linux</tag>
          
@@ -19,39 +19,21 @@
          
          
            
+             
+              <breadCrumb title="kernel" url="http://yoursite.com/categories/kernel/"/>
+          
         </display>
     </data>
     </url>
 
     
   <url>
-    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html</loc>
-    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
+    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html</loc>
+    <lastmod>2018-05-02T15:38:20.000Z</lastmod>
     <data>
         <display>
-        <title>new_reliable_android_kernel_root_exploit</title>
-        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-        <tag>kernel</tag>
-         
-        <tag>exploit</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html</loc>
-    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>syzkaller_source_read_rand_type_and_function</title>
-        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
+        <title>syzkaller_source_read_target_type_and_function</title>
+        <pubTime>2018-05-02T15:38:20.000Z</pubTime>
         
         <tag>syzkaller</tag>
          
@@ -66,11 +48,11 @@
     
   <url>
     <loc>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html</loc>
-    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
+    <lastmod>2018-05-02T15:38:06.000Z</lastmod>
     <data>
         <display>
         <title>syzkaller_source_read_syscall_type_and_function</title>
-        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
+        <pubTime>2018-05-02T15:38:06.000Z</pubTime>
         
         <tag>syzkaller</tag>
          
@@ -84,16 +66,37 @@
 
     
   <url>
-    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html</loc>
-    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
+    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html</loc>
+    <lastmod>2018-05-02T15:37:53.000Z</lastmod>
     <data>
         <display>
-        <title>syzkaller_source_read_target_type_and_function</title>
-        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
+        <title>syzkaller_source_read_rand_type_and_function</title>
+        <pubTime>2018-05-02T15:37:53.000Z</pubTime>
         
         <tag>syzkaller</tag>
          
         <tag>fuzzer</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html</loc>
+    <lastmod>2018-05-02T15:37:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>new_reliable_android_kernel_root_exploit</title>
+        <pubTime>2018-05-02T15:37:23.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>kernel</tag>
+         
+        <tag>exploit</tag>
          
          
            

