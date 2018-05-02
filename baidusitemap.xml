@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-cve_2013_6282_analysis.html</loc>
+    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>cve_2013_6282_analysis</title>
+        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>kernel</tag>
+         
+        <tag>cve-2013-6282</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html</loc>
+    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>new_reliable_android_kernel_root_exploit</title>
+        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>kernel</tag>
+         
+        <tag>exploit</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html</loc>
+    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>syzkaller_source_read_rand_type_and_function</title>
+        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
+        
+        <tag>syzkaller</tag>
+         
+        <tag>fuzzer</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html</loc>
+    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>syzkaller_source_read_syscall_type_and_function</title>
+        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
+        
+        <tag>syzkaller</tag>
+         
+        <tag>fuzzer</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html</loc>
+    <lastmod>2018-05-02T14:29:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>syzkaller_source_read_target_type_and_function</title>
+        <pubTime>2018-05-02T14:29:33.000Z</pubTime>
+        
+        <tag>syzkaller</tag>
+         
+        <tag>fuzzer</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+</urlset>
