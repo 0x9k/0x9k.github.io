@@ -7,15 +7,20 @@
   
   
   
-  <title>Hexo</title>
+  <title>syzkaller_source_read_generate_system_calls | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://0x9k.club/index.html">
+  <meta name="description" content="syzkaller源码阅读之生成系统调用生成系统调用的核心方法——Target类型中的Generate方法(prog/generation.go中定义)前面说过Prog类型是个很重要的类型,它包含了目标体系结构Target类型和相关的系统调用切片数组,这里生成系统调用主要是通过随机类型生成一个新的Prog类型变量并返回. Generate方法调用generateCall生成一个系统调用对应的参数等">
+<meta name="keywords" content="syzkaller,fuzzer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="syzkaller_source_read_generate_system_calls">
+<meta property="og:url" content="https://0x9k.club/posts/uncategorized/2018-05-14-syzkaller_source_read_generate_system_calls.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="syzkaller源码阅读之生成系统调用生成系统调用的核心方法——Target类型中的Generate方法(prog/generation.go中定义)前面说过Prog类型是个很重要的类型,它包含了目标体系结构Target类型和相关的系统调用切片数组,这里生成系统调用主要是通过随机类型生成一个新的Prog类型变量并返回. Generate方法调用generateCall生成一个系统调用对应的参数等">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-14T11:13:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="syzkaller_source_read_generate_system_calls">
+<meta name="twitter:description" content="syzkaller源码阅读之生成系统调用生成系统调用的核心方法——Target类型中的Generate方法(prog/generation.go中定义)前面说过Prog类型是个很重要的类型,它包含了目标体系结构Target类型和相关的系统调用切片数组,这里生成系统调用主要是通过随机类型生成一个新的Prog类型变量并返回. Generate方法调用generateCall生成一个系统调用对应的参数等">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -29,9 +34,6 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-    
-    
-  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -42,8 +44,8 @@
       var yiliaConfig = {
           fancybox: true,
           animate: true,
-          isHome: true,
-          isPost: false,
+          isHome: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -227,9 +229,7 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-syzkaller_source_read_generate_system_calls" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-syzkaller_source_read_generate_system_calls" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a  href="/posts/uncategorized/2018-05-14-syzkaller_source_read_generate_system_calls.html" class="article-date">
@@ -246,13 +246,24 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a  class="article-title" href="/posts/uncategorized/2018-05-14-syzkaller_source_read_generate_system_calls.html">syzkaller_source_read_generate_system_calls</a>
+    <h1 class="article-title" itemprop="name">
+      syzkaller_source_read_generate_system_calls
     </h1>
   
 
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fuzzer/">fuzzer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/syzkaller/">syzkaller</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -274,387 +285,181 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fuzzer/">fuzzer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/syzkaller/">syzkaller</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-cve_2013_6282_analysis" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html" class="article-date">
-      <time datetime="2018-05-02T15:39:39.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html">CVE-2013-6282-analysis</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="本文摘要——"><a href="#本文摘要——" class="headerlink" title=" 本文摘要——   "></a><strong> 本文摘要—— CVE-2013-6282-analysis </strong> <excerpt in="" index="" |="" 首页:摘要=""></excerpt></h1>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/kernel/">kernel</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cve-2013-6282/">cve-2013-6282</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kernel/">kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html#more">查看更多 >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/posts/uncategorized/2018-05-14-syzkaller_source_read_generate_system_calls.html">syzkaller_source_read_generate_system_calls</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 0x9k 的个人博客">0x9k</a></p>
+        <p><span>发布时间:</span>2018年05月14日 - 19时13分</p>
+        <p><span>最后更新:</span>2018年05月14日 - 19时13分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/posts/uncategorized/2018-05-14-syzkaller_source_read_generate_system_calls.html" title="syzkaller_source_read_generate_system_calls">https://0x9k.club/posts/uncategorized/2018-05-14-syzkaller_source_read_generate_system_calls.html</a>
+            <span class="copy-path" data-clipboard-text="原文: https://0x9k.club/posts/uncategorized/2018-05-14-syzkaller_source_read_generate_system_calls.html　　作者: 0x9k" title=""></span>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-syzkaller_source_read_target_type_and_function" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html" class="article-date">
-      <time datetime="2018-05-02T15:38:20.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html">syzkaller_source_read_target_type_and_function</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="本文摘要——"><a href="#本文摘要——" class="headerlink" title=" 本文摘要——   "></a><strong> 本文摘要—— syzkaller_source_read_target_type_and_function </strong> <excerpt in="" index="" |="" 首页:摘要=""></excerpt></h1>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fuzzer/">fuzzer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/syzkaller/">syzkaller</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html#more">查看更多 >></a>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CVE-2013-6282-analysis</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
   
 </article>
 
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#syzkaller源码阅读之生成系统调用"><span class="toc-number">1.</span> <span class="toc-text">syzkaller源码阅读之生成系统调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成系统调用的核心方法——Target类型中的Generate方法-prog-generation-go中定义"><span class="toc-number">1.1.</span> <span class="toc-text">生成系统调用的核心方法——Target类型中的Generate方法(prog/generation.go中定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机生成一个系统调用和该系统调用对应的参数-prog-rand-go中定义"><span class="toc-number">1.2.</span> <span class="toc-text">随机生成一个系统调用和该系统调用对应的参数(prog/rand.go中定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机生成系统调用Call类型-prog-rand-go中定义"><span class="toc-number">1.3.</span> <span class="toc-text">随机生成系统调用Call类型(prog/rand.go中定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为随机生成的系统调用生成相关的所有参数值-prog-rand-go中定义"><span class="toc-number">1.4.</span> <span class="toc-text">为随机生成的系统调用生成相关的所有参数值(prog/rand.go中定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为系统调用生成一个具体的参数值-prog-rand-go中定义"><span class="toc-number">1.5.</span> <span class="toc-text">为系统调用生成一个具体的参数值(prog/rand.go中定义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机生成系统调用总结"><span class="toc-number">1.6.</span> <span class="toc-text">随机生成系统调用总结</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
 
 
 
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-syzkaller_source_read_syscall_type_and_function" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html" class="article-date">
-      <time datetime="2018-05-02T15:38:06.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-
+<div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
     </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMzM5MC85OTQ2">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+    </script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+  
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html">syzkaller_source_read_syscall_type_and_function</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="本文摘要——"><a href="#本文摘要——" class="headerlink" title=" 本文摘要——   "></a><strong> 本文摘要—— syzkaller_source_read_syscall_type_and_function </strong> <excerpt in="" index="" |="" 首页:摘要=""></excerpt></h1>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fuzzer/">fuzzer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/syzkaller/">syzkaller</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-syzkaller_source_read_rand_type_and_function" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html" class="article-date">
-      <time datetime="2018-05-02T15:37:53.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html">syzkaller_source_read_rand_type_and_function</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="本文摘要——"><a href="#本文摘要——" class="headerlink" title=" 本文摘要——   "></a><strong> 本文摘要—— syzkaller_source_read_rand_type_and_function </strong> <excerpt in="" index="" |="" 首页:摘要=""></excerpt></h1>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fuzzer/">fuzzer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/syzkaller/">syzkaller</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-new_reliable_android_kernel_root_exploit" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html" class="article-date">
-      <time datetime="2018-05-02T15:37:23.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html">new_reliable_android_kernel_root_exploit</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="本文摘要——"><a href="#本文摘要——" class="headerlink" title=" 本文摘要——   "></a><strong> 本文摘要—— new_reliable_android_kernel_root_exploit </strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></h1>
-          
-      
+            <a  href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html" title="下一篇: CVE-2013-6282-analysis">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-14-syzkaller_source_read_generate_system_calls.html">syzkaller_source_read_generate_system_calls</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/kernel/2018-05-02-cve_2013_6282_analysis.html">CVE-2013-6282-analysis</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_target_type_and_function.html">syzkaller_source_read_target_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_syscall_type_and_function.html">syzkaller_source_read_syscall_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-syzkaller_source_read_rand_type_and_function.html">syzkaller_source_read_rand_type_and_function</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html">new_reliable_android_kernel_root_exploit</a></li></ul>
     
-    <div class="article-info article-info-index">
-      
-      
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exploit/">exploit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kernel/">kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/posts/uncategorized/2018-05-02-new_reliable_android_kernel_root_exploit.html#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
 
 
 
 
-
-
-
-
-
-
-
-  
-  
+    <script>
+        
+    </script>
 
 </div>
       <footer id="footer">
